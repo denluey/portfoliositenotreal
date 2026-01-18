@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Space+Mono:wght@400;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 60% 12%;
+    --foreground: 60 30% 96%;
+
+    --card: 220 70% 25%;
+    --card-foreground: 60 30% 96%;
+
+    --popover: 220 55% 15%;
+    --popover-foreground: 60 30% 96%;
+
+    --primary: 220 70% 25%;
+    --primary-foreground: 60 30% 96%;
+
+    --secondary: 220 50% 22%;
+    --secondary-foreground: 60 30% 96%;
+
+    --muted: 220 30% 30%;
+    --muted-foreground: 60 30% 96%;
+
+    --accent: 180 70% 50%;
+    --accent-foreground: 220 60% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 30% 35%;
+    --input: 220 30% 25%;
+    --ring: 180 70% 50%;
+
+    --radius: 0px;
+
+    /* Custom tokens */
+    --taskbar: 220 55% 10%;
+    --taskbar-foreground: 60 30% 96%;
+    --panel: 220 70% 20%;
+    --highlight: 180 100% 70%;
+    --bevel-light: 0 0% 100%;
+    --bevel-dark: 220 60% 8%;
+
+    --font-display: 'VT323', monospace;
+    --font-body: 'Space Mono', monospace;
+  }
+
+  .dark {
+    --background: 220 60% 12%;
+    --foreground: 60 30% 96%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .retro-border {
+    border: 3px solid;
+    border-color: hsl(var(--bevel-light)) hsl(var(--bevel-dark)) hsl(var(--bevel-dark)) hsl(var(--bevel-light));
+  }
+
+  .retro-border-inset {
+    border: 3px solid;
+    border-color: hsl(var(--bevel-dark)) hsl(var(--bevel-light)) hsl(var(--bevel-light)) hsl(var(--bevel-dark));
+  }
+
+  .retro-button {
+    @apply retro-border bg-primary text-primary-foreground px-4 py-2 cursor-pointer transition-all;
+  }
+
+  .retro-button:hover {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  .retro-button:active {
+    @apply retro-border-inset;
+  }
+
+  .taskbar-item {
+    @apply retro-border bg-primary hover:bg-secondary px-3 py-1 cursor-pointer flex items-center gap-2 text-sm;
+  }
+
+  .taskbar-item:active {
+    @apply retro-border-inset;
+  }
+
+  .taskbar-item.active {
+    @apply retro-border-inset bg-secondary;
+  }
+
+  .panel-slide {
+    transition: right 0.4s ease;
+  }
+
+  .dropdown-menu {
+    @apply retro-border bg-card;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-highlight {
+    color: hsl(var(--highlight));
+  }
+
+  .bg-taskbar {
+    background: hsl(var(--taskbar));
+  }
+
+  .bg-panel {
+    background: hsl(var(--panel));
+  }
+}
